@@ -4,6 +4,8 @@ import at.diemenschen.util.Level;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Stream;
 
 public class Level3 extends Level {
     public Level3() throws IOException {
@@ -11,8 +13,12 @@ public class Level3 extends Level {
     }
 
     @Override
-    public String processFile(Iterator<String> consumer) {
-        throw new UnsupportedOperationException("TODO");
+    public String processFile(Stream<String> consumer) {
+        List<String> lines = consumer
+                .skip(1)
+                .toList();
+
+
     }
 
     public static void main(String[] args) throws IOException {

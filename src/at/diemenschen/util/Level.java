@@ -32,7 +32,7 @@ abstract public class Level {
         }
     }
 
-    public abstract String processFile(Iterator<String> consumer);
+    public abstract String processFile(Stream<String> consumer);
 
     public final void runLevel() throws IOException {
         for (Path inputPath : inputPaths) {
@@ -47,7 +47,7 @@ abstract public class Level {
 
     private void processAndWriteToOutputFile(Path inputPath) throws IOException {
         try (Stream<String> lines = Files.lines(inputPath)) {
-            String outputContent = processFile(lines.iterator());
+            String outputContent = processFile(lines);
 
             int extensionIndex = inputPath.getFileName().toString().lastIndexOf('.');
             String outputFileName = inputPath.getFileName().toString().substring(0, extensionIndex) + OUTPUT_EXTENSION;
