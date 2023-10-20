@@ -13,7 +13,7 @@ public class Level4 extends Level {
 
     @Override
     public String processFile(Stream<String> consumer) {
-        throw new UnsupportedOperationException("TODO");
+
     }
 
     public static void main(String[] args) throws IOException {

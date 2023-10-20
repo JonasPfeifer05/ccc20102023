@@ -1,5 +1,8 @@
 package at.diemenschen.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PuzzlePiece {
     private KnobType top;
     private KnobType right;
@@ -11,6 +14,17 @@ public class PuzzlePiece {
         this.right = right;
         this.bottom = bottom;
         this.left = left;
+    }
+
+    public PuzzlePiece(String csv) {
+        List<KnobType> knobTypes = new ArrayList<>();
+        for (String knobType : csv.split(",")) {
+            knobTypes.add(KnobType.of(knobType.charAt(0)));
+        }
+        top = knobTypes.removeFirst();
+        right = knobTypes.removeFirst();
+        bottom = knobTypes.removeFirst();
+        left = knobTypes.removeFirst();
     }
 
     public void rotate() {
@@ -47,5 +61,10 @@ public class PuzzlePiece {
 
     public KnobType getLeft() {
         return left;
+    }
+
+    @Override
+    public String toString() {
+        return top + "," + right + "," + bottom + "," + left;
     }
 }
